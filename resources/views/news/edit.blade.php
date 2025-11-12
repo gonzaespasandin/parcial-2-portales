@@ -43,6 +43,15 @@
                             </div>
 
                             <div class="mb-3">
+                                <p>Imagen actual:</p>
+                                @if ($news->image !== null && \Storage::exists($news->image))
+                                    <img src="{{ \Storage::url($news->image) }}" alt="{{ $news->image_description }}" class="w-100 h-100 object-fit-cover">
+                                @else
+                                    <p>Sin imagen</p>
+                                @endif
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="image" class="form-label">Imagen</label>
                                 <input type="file" name="image" id="image" class="form-control @error('image')is-invalid @enderror" @error('image') aria-invalid="true" aria-errormessage="{{ $message }}" @enderror>
                                 @error('image')

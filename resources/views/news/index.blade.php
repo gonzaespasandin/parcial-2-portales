@@ -24,11 +24,12 @@
       <div class="col-lg-4 col-md-6">
         <div class="card h-100 shadow-sm border-0 news-card">
           <div class="card-img-top-container position-relative overflow-hidden news-image-height">
-              <!-- utilizo una imagen de standard por el momento, hasta que aprendamos filesystem -->
-              <img src="{{ url('img/news/logo-liga-de-cohetes.png') }}" 
-                   alt="Logo de la Liga de Cohetes" 
-                   class="card-img-top h-100 w-100 object-fit-cover news-image-transition">
-            </div>
+            @if ($n->image !== null && \Storage::exists($n->image))
+                <img src="{{ \Storage::url($n->image) }}" alt="{{ $n->image_description }}" class="w-100 h-100 object-fit-cover">
+            @else
+                <p>Sin imagen</p>
+            @endif
+          </div>
           <!--
             <div class="card-img-top-container bg-gradient-primary d-flex align-items-center justify-content-center news-placeholder-height">
               <i class="fas fa-rocket fa-3x text-white opacity-75"></i>
