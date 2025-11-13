@@ -19,7 +19,7 @@ class NewsSeeder extends Seeder
             //'image' => 'imagen1.jpg',
             //'image_description' => 'Descripción de la imagen 1',
             //'user_id' => 1,
-            //'category_id' => 1,
+            'category_fk_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ], [
@@ -28,7 +28,7 @@ class NewsSeeder extends Seeder
             //'image' => 'imagen2.jpg',
             //'image_description' => 'Descripción de la imagen 2',
             //'user_id' => 1,
-            //'category_id' => 2,
+            'category_fk_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ], [
@@ -37,7 +37,7 @@ class NewsSeeder extends Seeder
             //'image' => 'imagen3.jpg',
             //'image_description' => 'Descripción de la imagen 3',
             //'user_id' => 1,
-            //'category_id' => 3,
+            'category_fk_id' => 3,
             'created_at' => now(),
             'updated_at' => now(),
         ]]);

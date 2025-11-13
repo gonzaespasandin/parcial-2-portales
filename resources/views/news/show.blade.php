@@ -20,7 +20,9 @@
                         @endif
                     </div>
                     <div class="card-body p-4 p-md-5">
-                    <span class="badge news-show-author-badge px-3 py-2 mb-2">Juegos Epicos</span>
+                    @if ($news->category)
+                        <span class="badge news-show-author-badge px-3 py-2 mb-2" style="color: {{ $news->category->color }}">{{ $news->category->category_name }}</span>
+                    @endif
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
                             <h1 class="h2 fw-bold mb-2 mb-md-0">{{ $news->title }}</h1>
                         </div>
