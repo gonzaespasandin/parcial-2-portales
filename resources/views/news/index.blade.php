@@ -30,13 +30,15 @@
                 <p>Sin imagen</p>
             @endif
           </div>
-          <!--
-            <div class="card-img-top-container bg-gradient-primary d-flex align-items-center justify-content-center news-placeholder-height">
-              <i class="fas fa-rocket fa-3x text-white opacity-75"></i>
-            </div>
-          -->
+
 
           <div class="card-body d-flex flex-column justify-content-between">
+            <span class="badge news-show-author-badge px-3 py-2 mb-2" 
+              @if ($n->category) 
+                  style="color: {{ $n->category->color }}" 
+              @endif> 
+              {{ $n->category?->category_name ?? 'Sin categoría' }}
+            </span>
             <div class="d-flex justify-content-between align-items-center gap-2">
               <h2 class="card-title fw-bold text-dark mb-3">
                 {{ $n->title }}

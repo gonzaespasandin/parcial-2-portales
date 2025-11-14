@@ -19,14 +19,14 @@ class ProductSeeder extends Seeder
             'imageRoute' => 'img/home/banner-liga-de-cohetes.png',
             'imageDescription' => 'Banner de la Liga de Cohetes',
             'content' => 'Conduce coches supersónicos, anota goles increíbles y domina el campo en este deporte futurista que combina velocidad, estrategia y pura adrenalina.',
-            'price' => '20000'
+            'price' => 2000000
         ],[
             'title' => 'Liga de Cohetes Plus',
             'subtitle' => 'Complementos adicionales para el juego',
             'imageRoute' => 'img/home/cosmetics.jpg',
             'imageDescription' => 'Banner de la Liga de Cohetes Plus',
             'content' => 'Consigue accesorios exclusivos para quedar como un chad',
-            'price' => '5000'
+            'price' => 500000
         ]]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +11,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::all();
+        $news = News::with(['category'])->get();
 
         return view('news.index', ['news' => $news]);
     }
@@ -23,10 +24,13 @@ class NewsController extends Controller
 
     public function create()
     {
-        return view('news.create');
+        return view('news.create', [
+            'categories' => Category::all()
+        ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $request->validate([
             'title' => 'required|string|max:40',
@@ -47,7 +51,7 @@ class NewsController extends Controller
         ]);
 
         try {
-            $data = $request->only(['title', 'content', 'image', 'image_description']);
+            $data = $request->only(['title', 'content', 'image', 'image_description', 'category_fk_id']);
 
             if ($request->hasFile('image')) {
                 $data['image'] = $request->file('image')->store('images');
@@ -57,26 +61,28 @@ class NewsController extends Controller
 
             return to_route('news.index')
                 ->with('feedback.message', 'La noticia <b>' . e($data['title']) . '</b> se ha creado correctamente');
-
         } catch (\Throwable $th) {
-            // if(isset($data['image']) && Storage::exists($data['image'])) {
+            // if(isset($data['image']) && Storage::exists($data['image']))
             //     eliminar($data['image']);
 
-            //     throw $th;
-            // }
+            throw $th;
         }
     }
 
-    public function edit(int $id){
-        $news = News::findOrFail($id);
-        return view('news.edit', ['news' => $news]);
+    public function edit(int $id)
+    {
+        return view('news.edit', [
+            'news' => News::findOrFail($id),
+            'categories' => Category::all(),
+        ]);
     }
 
-    public function update(Request $request, int $id){
+    public function update(Request $request, int $id)
+    {
         $request->validate([
             'title' => 'required|string|max:40',
             'content' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'image_description' => 'required|string',
         ], [
             'title.required' => 'El título es requerido',
@@ -91,19 +97,18 @@ class NewsController extends Controller
             'image_description.string' => 'La descripción de la imagen debe ser una cadena de texto',
         ]);
 
-        $data = $request->only(['title', 'content', 'image_description']);    
+        $data = $request->only(['title', 'content', 'image_description', 'category_fk_id']);
 
         $news = News::findOrFail($id);
 
         $oldImage = $news->image;
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('images');
-            $oldImage = $news->image;
         }
 
         $news->update($data);
 
-        if ($oldImage !== null && Storage::exists($oldImage)) {
+        if ($request->hasFile('image') && $oldImage !== null && Storage::exists($oldImage)) {
             Storage::delete($oldImage);
         }
 
@@ -111,12 +116,14 @@ class NewsController extends Controller
             ->with('feedback.message', 'La noticia <b>' . e($news->title) . '</b> se ha actualizado correctamente');
     }
 
-    public function delete(int $id){
+    public function delete(int $id)
+    {
         $news = News::findOrFail($id);
         return view('news.delete', ['news' => $news]);
     }
 
-    public function destroy(int $id){
+    public function destroy(int $id)
+    {
 
         $news = News::findOrFail($id);
         $news->delete();
