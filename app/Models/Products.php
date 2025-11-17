@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Products extends Model
 {
@@ -19,5 +20,9 @@ class Products extends Model
                 return $value * 100;
             },
         );
+    }
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class, 'product_id_fk', 'id');
     }
 }

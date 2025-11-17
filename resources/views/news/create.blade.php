@@ -122,6 +122,7 @@
                                         aria-errormessage="{{ $message }}" 
                                     @enderror
                                 >{{ old('image_description') }}</textarea>
+                                <p class="text-muted small">La descripción de la imagen solo es requerida cuando se sube una imagen</p>
 
                                 @error('image_description')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>

@@ -13,11 +13,11 @@
     </div>
   </div>
   
-  @auth
+  @admin
   <div class="mb-4 d-flex justify-content-center">
     <a href="{{ route('news.create') }}" class="btn btn-primary">Crear noticia</a>
   </div>
-  @endauth
+  @endadmin
   
   <div class="row g-4">
     @foreach ($news as $n)
@@ -44,10 +44,10 @@
                 {{ $n->title }}
               </h2>
               <div class="d-flex gap-2">
-                @auth
+                @admin
                   <a class="btn btn-outline-secondary btn-sm" href="{{ route('news.edit', ['id' => $n->id]) }}"><i class="fas fa-edit"></i></a>
                   <a class="btn btn-outline-danger btn-sm" href="{{ route('news.delete', ['id' => $n->id]) }}"><i class="fas fa-trash"></i></a>
-                @endauth
+                @endadmin
               </div>
             </div>
 

@@ -1,16 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureUserIsAdmin;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])
     ->name('home');
 
-Route::get('login', [\App\Http\Controllers\AuthController::class, 'show'])
+Route::get('login', [\App\Http\Controllers\AuthController::class, 'showLogin'])
     ->name('auth.login.show')
     ->middleware('guest');
 
-Route::post('login', [\App\Http\Controllers\AuthController::class, 'process'])
+Route::post('login', [\App\Http\Controllers\AuthController::class, 'processLogin'])
     ->name('auth.login.process')
+    ->middleware('guest');
+
+Route::get('register', [\App\Http\Controllers\AuthController::class, 'showRegister'])
+    ->name('auth.register.show')
+    ->middleware('guest');
+
+Route::post('register', [\App\Http\Controllers\AuthController::class, 'processRegister'])
+    ->name('auth.register.process')
     ->middleware('guest');
 
 Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout'])
@@ -22,32 +31,36 @@ Route::get('news', [\App\Http\Controllers\NewsController::class, 'index'])
     
 Route::get('news/create', [\App\Http\Controllers\NewsController::class, 'create'])
     ->name('news.create')
-    ->middleware('auth');
+    ->middleware(EnsureUserIsAdmin::class);
 
 Route::post('news/create', [\App\Http\Controllers\NewsController::class, 'store'])
     ->name('news.store')
-    ->middleware('auth');
+    ->middleware(EnsureUserIsAdmin::class);
 
 Route::get('news/{id}/edit', [\App\Http\Controllers\NewsController::class, 'edit'])
     ->name('news.edit')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware(EnsureUserIsAdmin::class);
 
 Route::post('news/{id}/edit', [\App\Http\Controllers\NewsController::class, 'update'])
     ->name('news.update')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware(EnsureUserIsAdmin::class);
 
 Route::get('news/{id}/delete', [\App\Http\Controllers\NewsController::class, 'delete'])
     ->name('news.delete')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware(EnsureUserIsAdmin::class);
 
 Route::post('news/{id}/delete', [\App\Http\Controllers\NewsController::class, 'destroy'])
     ->name('news.destroy')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware(EnsureUserIsAdmin::class);
 
 Route::get('news/{id}', [\App\Http\Controllers\NewsController::class, 'show'])
     ->name('news.show')
     ->whereNumber('id');
+
+Route::get('admin', [\App\Http\Controllers\AdminController::class, 'index'])
+    ->name('admin.index')
+    ->middleware(EnsureUserIsAdmin::class);

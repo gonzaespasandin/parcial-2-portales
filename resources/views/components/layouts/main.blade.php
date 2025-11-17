@@ -36,9 +36,17 @@
                     </li>
                     @else
                     <li class="nav-item">
-                        <x-nav-link route="auth.login.show"><i class="fas fa-user"></i> Ingresar</x-nav-link>
+                        <x-nav-link route="auth.login.show">Ingresar</x-nav-link>
+                    </li>
+                    <li class="nav-item">
+                        <x-nav-link route="auth.register.show">Registrarme</x-nav-link>
                     </li>
                     @endauth
+                    @admin
+                    <li class="nav-item">
+                        <x-nav-link route="admin.index">Admin</x-nav-link>
+                    </li>
+                    @endadmin
                 </ul>
             </div>
         </div>
@@ -55,7 +63,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <p class="mb-0">Liga de Cohetes</p>
+                        <p class="mb-0 fw-semibold">Liga de Cohetes</p>
                     </div>
                     <div class="col-md-6 text-md-end">
                         <p class="mb-0">Todos los derechos reservados &copy; 2025</p>

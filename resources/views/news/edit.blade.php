@@ -93,7 +93,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <p>Imagen actual:</p>
+                                <p class="fw-semibold">Imagen actual:</p>
                                 @if ($news->image !== null && \Storage::exists($news->image))
                                     <img src="{{ \Storage::url($news->image) }}" alt="{{ $news->image_description }}" class="w-100 h-100 object-fit-cover">
                                 @else
@@ -121,14 +121,15 @@
                             <div class="mb-3">
                                 <label for="image_description" class="form-label">Descripción de la imagen</label>
                                 <textarea 
-                                    name="image_description" 
-                                    id="image_description" 
-                                    class="form-control @error('image_description')is-invalid @enderror" 
-                                    @error('image_description') 
-                                        aria-invalid="true" 
-                                        aria-errormessage="{{ $message }}" 
-                                    @enderror
+                                name="image_description" 
+                                id="image_description" 
+                                class="form-control @error('image_description')is-invalid @enderror" 
+                                @error('image_description') 
+                                aria-invalid="true" 
+                                aria-errormessage="{{ $message }}" 
+                                @enderror
                                 >{{ old('image_description', $news->image_description) }}</textarea>
+                                <p class="text-muted small">La descripción de la imagen solo es requerida cuando se sube una imagen</p>
 
                                 @error('image_description')
                                     <div class="invalid-feedback d-block">{{ $message }}</div>
