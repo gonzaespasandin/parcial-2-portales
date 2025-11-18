@@ -9,12 +9,13 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showLogin(){
+    public function showLogin()
+    {
         return view('auth.login');
     }
 
-    public function processLogin(Request $request){
-
+    public function processLogin(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -36,11 +37,13 @@ class AuthController extends Controller
             ->with('feedback.type', 'danger');
     }
 
-    public function showRegister(){
+    public function showRegister()
+    {
         return view('auth.register');
     }
 
-    public function processRegister(Request $request){
+    public function processRegister(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:30',
             'email' => 'required|email|unique:users',
@@ -71,8 +74,8 @@ class AuthController extends Controller
             ->with('feedback.type', 'success');
     }
 
-    public function logout(Request $request){
-        
+    public function logout(Request $request)
+    {
         Auth::logout();
         
         $request->session()->invalidate();

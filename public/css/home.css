@@ -2,21 +2,8 @@
     max-width: 1200px;
 }
 
-h1{
-    color: #ff6b35;
-}
-
 .hero-image-height {
     height: 650px;
-}
-
-
-.hero-title-color {
-    color: #ff6b35;
-}
-
-.hero-subtitle-color {
-    color: #1a1a2e;
 }
 
 .hero-description-color {

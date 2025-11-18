@@ -1,0 +1,23 @@
+Tecnicatura superior en desarrollo y diseño web
+Portales y comercio electronico
+4to Cuatrimestre
+2do Año
+Turno Noche
+DWN4AV
+Espasandin Gonzalo
+Santiago Gallino
+2do parcial
+
+CREDENCIALES
+
+Admin
+user:admin@admin.com
+pass:admin
+
+Usuario con juego y complementos comprados
+user:usuario@usuario.com
+pass:usuario
+
+Usuario solo con el juego comprado (sin complementos)
+user:usuario2@usuario2.com
+pass:usuario2

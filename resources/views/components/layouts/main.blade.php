@@ -15,23 +15,33 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg rocket-navbar">
         <div class="container-fluid mx-4">
-            <a class="navbar-brand rocket-brand" href="<?= route('home'); ?>">Liga de Cohetes</a>
+            <a class="navbar-brand rocket-brand" href="<?= route('home'); ?>">
+                <img src="{{ \Storage::url('images/logo.png') }}" alt="Logo de la Liga de Cohetes" class="img-fluid rocket-logo">
+                <span class="rocket-brand-text">Liga de Cohetes</span>
+            </a>
             <button class="navbar-toggler rocket-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <x-nav-link route="home">Inicio</x-nav-link>
                     </li>
                     <li class="nav-item">
                         <x-nav-link route="news.index">Noticias</x-nav-link>
                     </li>
+                    @admin
+                    <li class="nav-item">
+                        <x-nav-link route="admin.index">Panel de Administración</x-nav-link>
+                    </li>
+                    @endadmin
                     @auth
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="post" class="d-inline">
                             @csrf
-                            <button type="submit" class="btn rocket-logout-btn">{{ auth()->user()->name }} - Cerrar sesión</button>
+                            <button type="submit" class="btn rocket-logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                            </button>
                         </form>
                     </li>
                     @else
@@ -42,11 +52,6 @@
                         <x-nav-link route="auth.register.show">Registrarme</x-nav-link>
                     </li>
                     @endauth
-                    @admin
-                    <li class="nav-item">
-                        <x-nav-link route="admin.index">Admin</x-nav-link>
-                    </li>
-                    @endadmin
                 </ul>
             </div>
         </div>
@@ -63,7 +68,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <p class="mb-0 fw-semibold">Liga de Cohetes</p>
+                        <p class="mb-0 rocket-brand fw-semibold">Liga de Cohetes</p>
                     </div>
                     <div class="col-md-6 text-md-end">
                         <p class="mb-0">Todos los derechos reservados &copy; 2025</p>

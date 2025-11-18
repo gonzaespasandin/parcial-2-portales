@@ -23,7 +23,7 @@ class NewsSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ], [
-            'title' => 'La velocidad del erizo azul llega oficialmente a la Liga de Cohetes.',
+            'title' => 'Sonic X Liga de Cohetes.',
             'content' => 'En una colaboración inesperada con SEGA, Sonic the Hedgehog se une a la Liga de Cohetes para celebrar su aniversario número 35. Durante el evento “Ruedas Supersónicas”, los jugadores podrán desbloquear autos inspirados en Sonic, Tails y Knuckles, además de un modo temporal llamado “Anillos Turbo”, donde recolectar anillos aumenta tu velocidad máxima. El evento estará disponible del 15 al 30 de octubre, e incluirá desafíos especiales, música de Sonic remixada y explosiones con forma de anillo dorado. ¡No frenes, que la meta está más cerca que nunca!',
             'image' => 'images/sonic-liga-de-cohetes.jpg',
             'image_description' => 'Sonic the Hedgehog llega a la Liga de Cohetes',
@@ -32,12 +32,12 @@ class NewsSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ], [
-            'title' => 'Los motores rugen también en el mundo competitivo: llega el primer torneo nacional oficial.',
+            'title' => 'Los motores rugen también en el mundo competitivo',
             'content' => 'La Rocket League Argentina Cup reunirá a los 32 mejores equipos del país, con enfrentamientos semanales transmitidos en vivo por Twitch y YouTube. El torneo ofrecerá premios en efectivo, merchandising exclusivo y un trofeo impreso en 3D, cortesía del estudio desarrollador. El equipo ganador representará a Argentina en la Copa Latinoamericana de Cohetes 2025. Si tenés reflejos rápidos, nervios de acero y una conexión medianamente estable, ¡es tu momento de despegar hacia la gloria!',
-            'image' => 'images/cosmetics.jpg',
+            'image' => 'images/torneo-nacional.jpg',
             'image_description' => 'Primer torneo nacional oficial de la Liga de Cohetes',
             //'user_id' => 1,
-            'category_fk_id' => 3,
+            'category_fk_id' => 4,
             'created_at' => now(),
             'updated_at' => now(),
         ]]);

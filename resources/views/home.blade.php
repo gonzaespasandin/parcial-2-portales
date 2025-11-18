@@ -3,7 +3,7 @@
   <x-slot:css>href="<?= url('css/home.css'); ?>"</x-slot:css>
 
 
-  <h1 class="display-1 fw-bold text-center mb-5">Liga de Cohetes</h1>
+  <h1 class="display-1 fw-bold text-center text-white mb-5">Liga de Cohetes</h1>
 
   <div class="row g-4 align-items-stretch">
     @foreach ($products as $p)
@@ -11,7 +11,11 @@
       <section class="py-5 mb-5 h-100">
         <div class="hero-card bg-white rounded-4 shadow-lg overflow-hidden mx-auto hero-card-width h-100 d-flex flex-column">
           <div class="hero-image overflow-hidden hero-image-height">
-            <img src="{{ url($p->imageRoute) }}" alt="{{ $p->imageDescription }}" class="w-100 h-100 object-fit-cover">
+            @if ($p->imageRoute !== null && \Storage::exists($p->imageRoute))
+              <img src="{{ \Storage::url($p->imageRoute) }}" alt="{{ $p->imageDescription }}" class="w-100 h-100 object-fit-cover">
+            @else
+              <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
+            @endif
           </div>
           <div class="p-5 text-center text-dark d-flex flex-column justify-content-between flex-grow-1">
             <div>
@@ -38,7 +42,7 @@
     <div class="row align-items-stretch mb-3 feature-row-height">
       <div class="col-lg-6">
         <div class="feature-image overflow-hidden rounded-4 shadow h-100 feature-image-min-height">
-          <img src="<?= url('img/home/season-20-liga-de-cohetes.jpg'); ?>" alt="Imagen de la nueva Temporada" class="w-100 h-100 object-fit-cover">
+          <img src="{{ \Storage::url('images/season-20-liga-de-cohetes.jpg') }}" alt="Imagen de la nueva Temporada" class="w-100 h-100 object-fit-cover">
         </div>
       </div>
       <div class="col-lg-6">
@@ -57,7 +61,7 @@
     <div class="row align-items-stretch mb-3 feature-row-height">
       <div class="col-lg-6 order-lg-2">
         <div class="feature-image overflow-hidden rounded-4 shadow h-100 feature-image-min-height">
-          <img src="<?= url('img/home/sonic-liga-de-cohetes.jpg'); ?>" alt="Calcomania de Sonic" class="w-100 h-100 object-fit-cover">
+          <img src="{{ \Storage::url('images/sonic-liga-de-cohetes.jpg') }}" alt="Calcomania de Sonic" class="w-100 h-100 object-fit-cover">
         </div>
       </div>
       <div class="col-lg-6 order-lg-1">
@@ -68,7 +72,7 @@
             del erizo más rápido del mundo. Nuevos efectos de sonido, 
             decoraciones exclusivas y la velocidad que solo Sonic puede ofrecer.
           </p>
-          <button class="btn-primary btn btn-lg px-4 py-3 rounded-3 fw-medium">Ver Colaboración</button>
+          <a href="{{ route('news.show', ['id' => 2]) }}" class="btn-primary btn btn-lg px-4 py-3 rounded-3 fw-medium">Ver Colaboración</a>
         </div>
       </div>
     </div>
@@ -76,7 +80,7 @@
 
   <section class="cta-section py-5 mb-4 rounded-4 text-center text-white cta-background">
     <div class="container">
-      <h3 class="display-4 fw-semibold mb-3 cta-title-color">¿Listo para la Acción?</h3>
+      <h2 class="display-4 fw-semibold mb-3 cta-title-color">¿Listo para la Acción?</h2>
       <p class="fs-4 lh-base mb-4 mx-auto cta-text-color cta-text-width">
         Únete a millones de jugadores en todo el mundo y experimenta 
         el deporte más emocionante del futuro. ¡Descarga ahora y comienza tu leyenda!

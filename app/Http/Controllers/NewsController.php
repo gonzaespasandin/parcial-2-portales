@@ -12,7 +12,6 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::with(['category'])->get();
-
         return view('news.index', ['news' => $news]);
     }
 
@@ -35,6 +34,7 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required|string|max:40',
             'content' => 'required|string',
+            'category_fk_id' => 'required|exists:categories,category_id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'image_description' => 'nullable|required_with:image|string',
         ], [
@@ -43,6 +43,8 @@ class NewsController extends Controller
             'title.max' => 'El título debe tener menos de 40 caracteres',
             'content.required' => 'El contenido de la noticia es requerido',
             'content.string' => 'El contenido de la noticia debe ser una cadena de texto',
+            'category_fk_id.required' => 'La categoría es requerida',
+            'category_fk_id.exists' => 'La categoría no existe',
             'image.image' => 'La imagen debe ser jpeg, png o jpg',
             'image.mimes' => 'La imagen debe ser jpeg, png o jpg',
             'image.max' => 'La imagen debe pesar menos de 2048KB',
@@ -87,6 +89,7 @@ class NewsController extends Controller
             $rules = [
                 'title' => 'required|string|max:80',
                 'content' => 'required|string',
+                'category_fk_id' => 'required|exists:categories,category_id',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ];
 
@@ -102,6 +105,8 @@ class NewsController extends Controller
                 'title.max' => 'El título debe tener menos de 80 caracteres',
                 'content.required' => 'El contenido de la noticia es requerido',
                 'content.string' => 'El contenido de la noticia debe ser una cadena de texto',
+                'category_fk_id.required' => 'La categoría es requerida',
+                'category_fk_id.exists' => 'La categoría no existe',
                 'image.image' => 'La imagen debe ser jpeg, png o jpg',
                 'image.mimes' => 'La imagen debe ser jpeg, png o jpg',
                 'image.max' => 'La imagen debe pesar menos de 2048KB',

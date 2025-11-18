@@ -1,6 +1,5 @@
 .hero-section {
     background: linear-gradient(45deg, #ff6b35, #f7931e);
-    color: white;
     border: none;
     padding: 15px 35px;
     font-size: 1.1rem;
@@ -64,12 +63,5 @@ h2 {
 
 .image-height {
     height: 500px;
-}
-
-
-.news-show-author-badge {
-    background: rgba(255, 107, 53, 0.1);
-    color: #ff6b35;
-    border: 1px solid rgba(255, 107, 53, 0.35);
 }
 

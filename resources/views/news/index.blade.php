@@ -8,8 +8,8 @@
   
   <div class="hero-section bg-primary text-white py-5 mb-5 rounded-3 shadow">
     <div class="container text-center">
-      <h1 class="display-4 fw-bold mb-3">Cohete de noticias</h1>
-      <p class="lead">Mantente al día con las últimas novedades de la Liga de Cohetes</p>
+      <h1 class="display-4 text-dark fw-bold mb-3">Cohete de noticias</h1>
+      <p class="lead text-dark fw-semibold">Mantente al día con las últimas novedades de la Liga de Cohetes</p>
     </div>
   </div>
   
@@ -25,15 +25,15 @@
         <div class="card h-100 shadow-sm border-0 news-card">
           <div class="card-img-top-container position-relative overflow-hidden news-image-height">
             @if ($n->image !== null && \Storage::exists($n->image))
-                <img src="{{ \Storage::url($n->image) }}" alt="{{ $n->image_description }}" class="w-100 h-100 object-fit-cover">
+              <img src="{{ \Storage::url($n->image) }}" alt="{{ $n->image_description }}" class="w-100 h-100 object-fit-cover">
             @else
-                <p>Sin imagen</p>
+              <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
             @endif
           </div>
 
 
           <div class="card-body d-flex flex-column justify-content-between">
-            <span class="badge news-show-author-badge px-3 py-2 mb-2" 
+            <span class="fw-semibold mb-2" 
               @if ($n->category) 
                   style="color: {{ $n->category->color }}" 
               @endif> 

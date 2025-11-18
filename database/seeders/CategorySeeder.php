@@ -31,6 +31,24 @@ class CategorySeeder extends Seeder
             'color' => '#29a329',
             'created_at' => now(),
             'updated_at' => now(),
+        ], [
+            'category_id' => 4,
+            'category_name' => 'Eventos',
+            'color' => '#a32929',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ], [
+            'category_id' => 5,
+            'category_name' => 'Noticias',
+            'color' => '#6d3bd1',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ], [
+            'category_id' => 6,
+            'category_name' => 'Otros',
+            'color' => '#1a1919',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]
     ]);
         

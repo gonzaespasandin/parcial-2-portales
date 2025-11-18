@@ -16,11 +16,11 @@
                         @if ($news->image !== null && \Storage::exists($news->image))
                             <img src="{{ \Storage::url($news->image) }}" alt="{{ $news->image_description }}" class="w-100 h-100 object-fit-cover">
                         @else
-                            <p>Sin imagen</p>
+                            <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
                         @endif
                     </div>
                     <div class="card-body p-4 p-md-5">
-                        <span class="badge news-show-author-badge px-3 py-2 mb-2" 
+                        <span class="fw-semibold mb-2" 
                         @if ($news->category) 
                             style="color: {{ $news->category->color }}" 
                         @endif> 
