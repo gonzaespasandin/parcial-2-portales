@@ -6,3 +6,17 @@ h1 {
     background: linear-gradient(45deg, #ff6b35, #f7931e);
     color: #fff;
 }
+
+.pagination .page-link {
+    color: #000000; 
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #ff8c00; 
+    border-color: #ff8c00;
+    color: rgb(0, 0, 0);
+}
+
+.pagination .page-link:hover {
+    color: #ff8c00;
+}

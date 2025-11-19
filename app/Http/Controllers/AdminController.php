@@ -12,7 +12,7 @@ class AdminController extends Controller
         $users = User::with('purchases.product')
             ->where('role', 'user')
             ->orderBy('created_at', 'asc')
-            ->get();
+            ->paginate(10);
 
         return view('admin.index', [
             'users' => $users,

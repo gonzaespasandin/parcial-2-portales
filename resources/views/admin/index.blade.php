@@ -14,7 +14,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h2 class="h4 mb-0 fw-bold">Listado de Usuarios</h2>
                     <span class="badge bg-light text-dark fs-6">
-                        Total: {{ $users->count() }}
+                        Total: {{ $users->total() }}
                     </span>
                 </div>
             </div>
@@ -79,6 +79,9 @@
                     <p class="text-muted mb-0">No hay usuarios registrados</p>
                 </div>
             @endif
+            <div class="card-footer py-4s">
+                {{ $users->links() }}
+            </div>
         </div>
     </div>
 </x-layouts.main>
