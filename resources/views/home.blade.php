@@ -17,7 +17,7 @@
               <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
             @endif
           </div>
-          <div class="p-5 text-center text-dark d-flex flex-column justify-content-between flex-grow-1">
+          <div class="p-4 text-center text-dark d-flex flex-column justify-content-between flex-grow-1">
             <div>
               <h2 class="display-3 fs-1 fw-bold mb-3 hero-title-color">{{ $p->title }}</h2>
               <p class="fs-4 fw-medium mb-3 hero-subtitle-color">{{ $p->subtitle }}</p>
@@ -29,7 +29,7 @@
               <p class="fs-1 fw-bold text-primary mb-3">
                 {{ number_format($p->price, 0, ',', '.') }} AR$
               </p>
-              <button class="btn-primary btn btn-lg px-5 py-3 rounded-3 fw-semibold">Comprar Juego</button>
+              <button class="btn-primary btn btn-lg px-5 py-3 rounded-3 fw-semibold">Comprar {{ $p->type }}</button>
             </div>
           </div>
         </div>

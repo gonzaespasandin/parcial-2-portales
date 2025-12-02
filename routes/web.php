@@ -64,3 +64,7 @@ Route::get('news/{id}', [\App\Http\Controllers\NewsController::class, 'show'])
 Route::get('admin', [\App\Http\Controllers\AdminController::class, 'index'])
     ->name('admin.index')
     ->middleware(EnsureUserIsAdmin::class);
+
+Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'index'])
+    ->name('profile.index')
+    ->middleware('auth');
