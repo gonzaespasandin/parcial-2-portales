@@ -18,6 +18,7 @@ body {
 h1, h2, h3, h4, h5, h6, .rocket-brand {
     font-family: 'Futura';
     text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #app {
@@ -35,19 +36,19 @@ h1, h2, h3, h4, h5, h6, .rocket-brand {
 }
 
 .rocket-brand {
-    font-size: 1.4rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .rocket-logo {
     width: 40px;
     height: 40px;
-}
-
-.rocket-brand:hover {
-    scale: 1.05;
-    transition: all 0.3s ease;
 }
 
 .rocket-toggler {
@@ -119,7 +120,7 @@ h1, h2, h3, h4, h5, h6, .rocket-brand {
 .btn-primary {
     background: linear-gradient(45deg, #ff6b35, #f7931e);
     color: rgb(0, 0, 0);
-    font-weight: 700;
+    font-weight: 600;
     border: none;
     padding: 15px 35px;
     font-size: 1.1rem;
@@ -141,24 +142,25 @@ h1, h2, h3, h4, h5, h6, .rocket-brand {
 }
 
 .btn-secondary {
-    background: transparent;
-    color: #ff6b35;
-    border: 2px solid #ff6b35;
-    padding: 13px 35px;
-    font-size: 1.1rem;
-    text-decoration: none;
+    background: linear-gradient(45deg, #206eff, #1e3ef7);
+    color: #ffffff;
     font-weight: 600;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(53, 141, 255, 0.4);
 }
 
 .btn-secondary:hover {
-    background-color: #ff6b35;
-    color: white;
-    transform: translateY(-2px);
+    background: linear-gradient(45deg, #1e3ef7, #206eff);
+    scale: 1.05;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(53, 141, 255, 0.4);
 }
-
+  
 
 @media (max-width: 992px) {
     .rocket-brand {

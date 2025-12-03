@@ -7,6 +7,11 @@
             <div class="col-12 col-lg-10 col-xl-8">
                 <div class="card shadow-lg border-0 rounded-4 overflow-hidden profile-card mb-4">
                     <div class="profile-header">
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ route('profile.edit') }}" class="btn btn-secondary text-white px-3 py-2">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </div>
                         <div class="profile-avatar">
                             <i class="fas fa-user"></i>
                         </div>

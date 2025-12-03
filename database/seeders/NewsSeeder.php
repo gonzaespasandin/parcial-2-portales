@@ -23,7 +23,7 @@ class NewsSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ], [
-            'title' => 'Sonic X Liga de Cohetes.',
+            'title' => 'Nueva colaboración: Sonic x Liga de Cohetes',
             'content' => 'En una colaboración inesperada con SEGA, Sonic the Hedgehog se une a la Liga de Cohetes para celebrar su aniversario número 35. Durante el evento “Ruedas Supersónicas”, los jugadores podrán desbloquear autos inspirados en Sonic, Tails y Knuckles, además de un modo temporal llamado “Anillos Turbo”, donde recolectar anillos aumenta tu velocidad máxima. El evento estará disponible del 15 al 30 de octubre, e incluirá desafíos especiales, música de Sonic remixada y explosiones con forma de anillo dorado. ¡No frenes, que la meta está más cerca que nunca!',
             'image' => 'images/sonic-liga-de-cohetes.jpg',
             'image_description' => 'Sonic the Hedgehog llega a la Liga de Cohetes',

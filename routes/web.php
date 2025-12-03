@@ -68,3 +68,11 @@ Route::get('admin', [\App\Http\Controllers\AdminController::class, 'index'])
 Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'index'])
     ->name('profile.index')
     ->middleware('auth');
+
+Route::get('profile/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])
+    ->name('profile.edit')
+    ->middleware('auth');
+
+Route::post('profile/edit', [\App\Http\Controllers\ProfileController::class, 'update'])
+    ->name('profile.update')
+    ->middleware('auth');

@@ -15,9 +15,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg rocket-navbar">
         <div class="container-fluid mx-4">
-            <a class="navbar-brand rocket-brand" href="<?= route('home'); ?>">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="<?= route('home'); ?>">
                 <img src="{{ \Storage::url('images/logo.png') }}" alt="Logo de la Liga de Cohetes" class="img-fluid rocket-logo">
-                <span class="rocket-brand-text">Liga de Cohetes</span>
+                <span class="rocket-brand">Liga de Cohetes</span>
             </a>
             <button class="navbar-toggler rocket-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,9 @@
                     </li>
                     @endadmin
                     @auth
+                    <li class="nav-item">
+                        <x-nav-link route="profile.index"><i class="fas fa-user me-2"></i>Mi Perfil</x-nav-link>
+                    </li>
                     <li class="nav-item">
                         <form action="{{ route('auth.logout') }}" method="post" class="d-inline">
                             @csrf
