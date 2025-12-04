@@ -47,6 +47,9 @@
                             </button>
                         </form>
                     </li>
+                    <li class="nav-item">
+                        <x-nav-link route="cart.index"><i class="fas fa-shopping-cart me-2"></i>Carrito</x-nav-link>
+                    </li>
                     @else
                     <li class="nav-item">
                         <x-nav-link route="auth.login.show">Ingresar</x-nav-link>

@@ -85,6 +85,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Verificar si el usuario ya compró un producto específico
+     */
+    public function hasPurchasedProduct(int $productId): bool
+    {
+        return $this->purchases->contains(function($purchase) use ($productId) {
+            return $purchase->product_id_fk == $productId;
+        });
+    }
+
+    /**
      * Obtener la fecha de la última compra
      */
     public function getLastPurchaseDate(): string

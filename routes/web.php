@@ -76,3 +76,19 @@ Route::get('profile/edit', [\App\Http\Controllers\ProfileController::class, 'edi
 Route::post('profile/edit', [\App\Http\Controllers\ProfileController::class, 'update'])
     ->name('profile.update')
     ->middleware('auth');
+    
+Route::get('cart', [\App\Http\Controllers\CartController::class, 'index'])
+    ->name('cart.index')
+    ->middleware('auth');
+
+Route::post('cart/add', [\App\Http\Controllers\CartController::class, 'add'])
+    ->name('cart.add')
+    ->middleware('auth');
+
+Route::post('cart/remove/{id}', [\App\Http\Controllers\CartController::class, 'remove'])
+    ->name('cart.remove')
+    ->middleware('auth');
+
+Route::post('cart/clear', [\App\Http\Controllers\CartController::class, 'clear'])
+    ->name('cart.clear')
+    ->middleware('auth');

@@ -29,7 +29,11 @@
               <p class="fs-1 fw-bold text-primary mb-3">
                 {{ number_format($p->price, 0, ',', '.') }} AR$
               </p>
-              <button class="btn-primary btn btn-lg px-5 py-3 rounded-3 fw-semibold">Comprar {{ $p->type }}</button>
+              <form action="{{ route('cart.add') }}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $p->id }}">
+                <button type="submit" class="btn-primary btn btn-lg px-5 py-3 rounded-3 fw-semibold">Comprar {{ $p->type }}</button>
+              </form>
             </div>
           </div>
         </div>
