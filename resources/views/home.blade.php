@@ -32,7 +32,10 @@
               <form action="{{ route('cart.add') }}" method="post">
                 @csrf
                 <input type="hidden" name="product_id" value="{{ $p->id }}">
-                <button type="submit" class="btn-primary btn btn-lg px-5 py-3 rounded-3 fw-semibold">Comprar {{ $p->type }}</button>
+                <button type="submit" class="btn-primary btn btn-lg px-5 py-3 rounded-3 fw-semibold">
+                  <i class="fas fa-shopping-cart me-2"></i>
+                  Agregar al carrito
+                </button>
               </form>
             </div>
           </div>
