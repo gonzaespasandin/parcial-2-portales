@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureUserIsAdmin;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use App\Http\Middleware\VerifyMercadoPagoCallback;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'home'])
     ->name('home');
@@ -92,3 +94,23 @@ Route::post('cart/remove/{id}', [\App\Http\Controllers\CartController::class, 'r
 Route::post('cart/clear', [\App\Http\Controllers\CartController::class, 'clear'])
     ->name('cart.clear')
     ->middleware('auth');
+
+Route::post('mercadopago/create', [\App\Http\Controllers\MercadoPagoController::class, 'createPreference'])
+    ->name('mercadopago.create-preference')
+    ->middleware('auth');
+
+Route::get('mercadopago/success', [\App\Http\Controllers\MercadoPagoController::class, 'success'])
+    ->name('mercadopago.success')
+    ->middleware('auth', VerifyMercadoPagoCallback::class);
+
+Route::get('mercadopago/failure', [\App\Http\Controllers\MercadoPagoController::class, 'failure'])
+    ->name('mercadopago.failure')
+    ->middleware('auth', VerifyMercadoPagoCallback::class);
+
+Route::get('mercadopago/pending', [\App\Http\Controllers\MercadoPagoController::class, 'pending'])
+    ->name('mercadopago.pending')
+    ->middleware('auth', VerifyMercadoPagoCallback::class);
+
+Route::post('mercadopago/confirmar-pago', [\App\Http\Controllers\MercadoPagoController::class, 'verifyPayment'])
+    ->name('mercadopago.verify-payment')
+    ->withoutMiddleware(VerifyCsrfToken::class);

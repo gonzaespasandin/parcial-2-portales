@@ -69,7 +69,7 @@
 
                 <div class="card shadow-lg border-0 rounded-4 profile-card">
                     <div class="card-header-profile">
-                        <h2 class="section-title">
+                        <h2 class="section-title" id="historial-de-compras">
                             <i class="fas fa-history me-2"></i>
                             Historial de Compras
                         </h2>

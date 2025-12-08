@@ -1,3 +1,7 @@
+<?php
+/** @var array $cartItems */
+/** @var float $total */
+?>
 <x-layouts.main>
     <x-slot:title>Carrito de compras - Liga de Cohetes</x-slot:title>
     <x-slot:css>href="<?= url('css/cart.css'); ?>"</x-slot:css>
@@ -15,7 +19,7 @@
                             @if(!empty($cartItems) && count($cartItems) > 0)
                                 <form action="{{ route('cart.clear') }}" method="post">
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de vaciar el carrito?')">
+                                    <button type="submit" class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash me-1"></i>
                                         Vaciar carrito
                                     </button>
@@ -26,9 +30,9 @@
 
                     <div class="card-body p-4 p-lg-5">
                         @if(empty($cartItems) || count($cartItems) === 0)
-                            <div class="empty-state">
-                                <i class="fas fa-shopping-cart"></i>
-                                <p class="empty-message">Tu carrito está vacío</p>
+                            <div class="text-center py-5">
+                                <i class="fas fa-shopping-cart text-secondary opacity-25" style="font-size: 5rem;"></i>
+                                <p class="fs-4 fw-semibold text-dark mt-3 mb-2">Tu carrito está vacío</p>
                                 <p class="text-muted">Explora nuestros productos y comienza a agregar al carrito</p>
                                 <a href="{{ route('home') }}" class="btn btn-primary btn-lg mt-3">
                                     <i class="fas fa-store me-2"></i>
@@ -36,20 +40,20 @@
                                 </a>
                             </div>
                         @else
-                            <div class="cart-items">
+                            <div class="d-flex flex-column gap-4">
                                 @foreach($cartItems as $item)
                                     <div class="cart-item">
                                         <div class="cart-item-image">
                                             @if ($item['product']->imageRoute !== null && \Storage::exists($item['product']->imageRoute))
-                                                <img src="{{ \Storage::url($item['product']->imageRoute) }}" alt="{{ $item['product']->imageDescription }}">
+                                                <img src="{{ \Storage::url($item['product']->imageRoute) }}" alt="{{ $item['product']->imageDescription }}" class="w-100 h-100 object-fit-cover">
                                             @else
-                                                <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes">
+                                                <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
                                             @endif
                                         </div>
-                                        <div class="cart-item-details">
-                                            <h3 class="cart-item-title">{{ $item['product']->title }}</h3>
-                                            <p class="cart-item-subtitle">{{ $item['product']->subtitle }}</p>
-                                            <div class="cart-item-meta">
+                                        <div class="flex-fill d-flex flex-column justify-content-center">
+                                            <h3 class="fs-4 fw-bold text-dark mb-2">{{ $item['product']->title }}</h3>
+                                            <p class="text-muted mb-3">{{ $item['product']->subtitle }}</p>
+                                            <div class="d-flex align-items-center flex-wrap gap-2">
                                                 <span class="badge badge-type badge-{{ strtolower($item['product']->type) }}">
                                                     {{ $item['product']->type }}
                                                 </span>
@@ -59,7 +63,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="cart-item-price">
+                                        <div class="d-flex flex-column align-items-end justify-content-center flex-shrink-0">
                                             <div class="price-value">{{ number_format($item['product']->price, 0, ',', '.') }} AR$</div>
                                             <form action="{{ route('cart.remove', ['id' => $item['product']->id]) }}" method="post" class="mt-3">
                                                 @csrf
@@ -85,20 +89,23 @@
                             </h2>
                         </div>
                         <div class="card-body p-4 p-lg-5">
-                            <div class="summary-row">
-                                <span class="summary-label">Productos ({{ count($cartItems) }})</span>
-                                <span class="summary-value">{{ number_format($total, 0, ',', '.') }} AR$</span>
+                            <div class="d-flex justify-content-between align-items-center py-3 border-bottom">
+                                <span class="fs-5 text-secondary fw-semibold">Productos ({{ count($cartItems) }})</span>
+                                <span class="fs-5 text-dark fw-bold">{{ number_format($total, 0, ',', '.') }} AR$</span>
                             </div>
-                            <div class="summary-row summary-total">
-                                <span class="summary-label">Total</span>
-                                <span class="summary-value">{{ number_format($total, 0, ',', '.') }} AR$</span>
+                            <div class="summary-total d-flex justify-content-between align-items-center">
+                                <span class="summary-label fw-bold">Total</span>
+                                <span class="price-value">{{ number_format($total, 0, ',', '.') }} AR$</span>
                             </div>
                             <div class="d-grid gap-2 mt-4">
-                                <button class="btn btn-primary btn-lg">
-                                    <i class="fas fa-credit-card me-2"></i>
-                                    Proceder al pago
-                                </button>
-                                <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+                                <form action="{{ route('mercadopago.create-preference') }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        <i class="fas fa-credit-card me-2"></i>
+                                        Proceder al pago
+                                    </button>
+                                </form>
+                                <a href="{{ route('home') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left me-2"></i>
                                     Seguir comprando
                                 </a>

@@ -170,17 +170,12 @@
     color: white;
 }
 
-.badge-dlc {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
-}
-
 .empty-state {
     text-align: center;
     padding: 3rem 2rem;
 }
 
-.empty-state i {
+.empty-state > i {
     font-size: 4rem;
     color: #dee2e6;
     margin-bottom: 1rem;
