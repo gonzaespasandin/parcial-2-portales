@@ -33,7 +33,6 @@ class MercadoPagoController extends Controller
                 $total += $subtotal;
                 $items[] = [
                     'title' => $product->title,
-                    'description' => $product->description ?? 'Producto sin descripción',
                     'quantity' => $quantity,
                     'unit_price' => floatval($product->price),
                     'currency_id' => 'ARS',
@@ -107,6 +106,9 @@ class MercadoPagoController extends Controller
         Log::info('---------------------------------------------------');
         Log::info('Datos del pago con Mercado pago: ' . json_encode($data));
         Log::info('---------------------------------------------------');
+
+        session()->forget('cart');
+        
         return view('mercadopago.success');
     }
 
