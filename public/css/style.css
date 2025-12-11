@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6, .rocket-brand {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .rocket-brand {
     font-family: 'Futura';
     text-transform: uppercase;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -159,6 +159,26 @@ h1, h2, h3, h4, h5, h6, .rocket-brand {
     scale: 1.05;
     color: #ffffff;
     box-shadow: 0 6px 20px rgba(53, 141, 255, 0.4);
+}
+
+.badge-type {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.badge-juego {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.badge-complemento {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
 }
   
 

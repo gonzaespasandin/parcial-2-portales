@@ -69,26 +69,6 @@
     text-align: right;
 }
 
-.badge-type {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-radius: 20px;
-    display: inline-block;
-}
-
-.badge-juego {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.badge-complemento {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
-}
-
 .cart-summary {
     background: rgba(255, 255, 255, 0.95);
 }

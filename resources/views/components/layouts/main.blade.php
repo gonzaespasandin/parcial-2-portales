@@ -20,7 +20,7 @@
                 <span class="rocket-brand">Liga de Cohetes</span>
             </a>
             <button class="navbar-toggler rocket-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
@@ -30,25 +30,33 @@
                     <li class="nav-item">
                         <x-nav-link route="news.index">Noticias</x-nav-link>
                     </li>
-                    @admin
-                    <li class="nav-item">
-                        <x-nav-link route="admin.index">Panel de Administración</x-nav-link>
-                    </li>
-                    @endadmin
                     @auth
-                    <li class="nav-item">
-                        <x-nav-link route="profile.index"><i class="fas fa-user me-2"></i>Mi Perfil</x-nav-link>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex justify-content-center align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user me-2"></i>{{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('profile.index') }}">Mi perfil</a>
+                            </li>
+                            @admin
+                            <li>
+                                <a class="dropdown-item" href="{{ route('admin.index') }}">Panel de administración</a>
+                            </li>
+                            @endadmin
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="{{ route('auth.logout') }}" method="post" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <form action="{{ route('auth.logout') }}" method="post" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn rocket-logout-btn">
-                                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
-                            </button>
-                        </form>
-                    </li>
-                    <li class="nav-item">
-                        <x-nav-link route="cart.index"><i class="fas fa-shopping-cart me-2"></i>Carrito</x-nav-link>
+                        <x-nav-link route="cart.index"><i class="fas fa-shopping-cart me-2"></i><span class="badge bg-primary rounded-pill rocket-cart-badge">{{ count(session()->get('cart', [])) }}</span></x-nav-link>
                     </li>
                     @else
                     <li class="nav-item">

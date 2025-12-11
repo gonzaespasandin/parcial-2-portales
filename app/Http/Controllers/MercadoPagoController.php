@@ -45,7 +45,7 @@ class MercadoPagoController extends Controller
             $preference = $preferenceFactory->create([
                 'items' => $items,
                 'back_urls' => [
-                    'success' => 'https://6db8c2ec7f15.ngrok-free.app/mercadopago/success',
+                    'success' => config('mercadopago.ngrok_url') . '/mercadopago/success',
                     'failure' => route('mercadopago.failure'),
                     'pending' => route('mercadopago.pending'),
                 ],

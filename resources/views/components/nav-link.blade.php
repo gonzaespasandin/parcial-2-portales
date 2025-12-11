@@ -1,1 +1,1 @@
-<a class="nav-link {{ request()->routeIs($route) ? 'active' : '' }}" {!! request()-> routeIs($route) ?  'aria-current="page"' : '' !!} href="<?= route($route); ?>"><?= $slot ?></a>
+<a class="nav-link d-flex justify-content-center align-items-center {{ request()->routeIs($route) ? 'active' : '' }}" {!! request()-> routeIs($route) ?  'aria-current="page"' : '' !!} href="<?= route($route); ?>"><?= $slot ?></a>
