@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use MercadoPago\Client\Preference\PreferenceClient;
 use MercadoPago\MercadoPagoConfig;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -22,7 +22,7 @@ class MercadoPagoController extends Controller
     
             $productsIds = array_keys($cart);
     
-            $products = Products::whereIn('id', $productsIds)->get();
+            $products = Product::whereIn('id', $productsIds)->get();
     
             $items = [];
             $total = 0;

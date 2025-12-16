@@ -37,7 +37,7 @@
               @if ($n->category) 
                   style="color: {{ $n->category->color }}" 
               @endif> 
-              {{ $n->category?->category_name ?? 'Sin categoría' }}
+              {{ $n->category?->name ?? 'Sin categoría' }}
             </span>
             <div class="d-flex justify-content-between align-items-center gap-2">
               <h2 class="card-title fw-bold text-dark mb-3">

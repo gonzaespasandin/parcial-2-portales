@@ -16,8 +16,8 @@
                         <p class="text-muted mb-2"><i class="fas fa-trophy me-2 text-warning"></i>Producto más vendido</p>
                         <div class="d-flex align-items-center gap-3">
                             <div class="ratio ratio-1x1 rounded-circle overflow-hidden img-product">
-                                @if(!empty($topProduct?->imageRoute))
-                                    <img src="{{ \Storage::url($topProduct->imageRoute) }}" class="img-fluid" alt="Producto más vendido">
+                                @if(!empty($topProduct?->image_route))
+                                    <img src="{{ \Storage::url($topProduct->image_route) }}" class="img-fluid" alt="Producto más vendido">
                                 @else
                                     <div class="bg-light d-flex align-items-center justify-content-center h-100 text-muted">
                                         <i class="fas fa-box"></i>

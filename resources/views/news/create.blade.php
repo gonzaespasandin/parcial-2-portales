@@ -65,10 +65,10 @@
 
                                     @foreach ($categories as $category)
                                     <option
-                                        value="{{ $category->category_id }}"
-                                        @selected($category->category_id == old('category_fk_id'))
+                                        value="{{ $category->id }}"
+                                        @selected($category->id == old('category_fk_id'))
                                     >
-                                        {{ $category->category_name }}
+                                        {{ $category->name }}
                                     </option>
                                     @endforeach
 

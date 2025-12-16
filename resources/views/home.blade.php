@@ -11,8 +11,8 @@
       <section class="py-5 mb-5 h-100">
         <div class="hero-card bg-white rounded-4 shadow-lg overflow-hidden mx-auto hero-card-width h-100 d-flex flex-column">
           <div class="hero-image overflow-hidden hero-image-height">
-            @if ($p->imageRoute !== null && \Storage::exists($p->imageRoute))
-              <img src="{{ \Storage::url($p->imageRoute) }}" alt="{{ $p->imageDescription }}" class="w-100 h-100 object-fit-cover">
+            @if ($p->image_route !== null && \Storage::exists($p->image_route))
+              <img src="{{ \Storage::url($p->image_route) }}" alt="{{ $p->image_description }}" class="w-100 h-100 object-fit-cover">
             @else
               <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
             @endif

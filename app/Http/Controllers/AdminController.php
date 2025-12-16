@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Products;
+use App\Models\Product;
 use App\Models\Purchase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +18,7 @@ class AdminController extends Controller
             ->orderBy('created_at', 'asc')
             ->paginate(10);
 
-        $topProduct = Products::select('id', 'title', 'imageRoute')
+        $topProduct = Product::select('id', 'title', 'image_route')
             ->withCount('purchases')
             ->orderByDesc('purchases_count')
             ->first();

@@ -65,13 +65,21 @@ class User extends Authenticatable
     }
 
     /**
+     * Verificar si el usuario ya compró un producto específico
+     */
+    public function hasPurchasedProduct(int $productId): bool
+    {
+        return $this->purchases->contains(function($purchase) use ($productId) {
+            return $purchase->product_id_fk == $productId;
+        });
+    }
+
+    /**
      * Verificar si el usuario compró el juego base
      */
     public function hasGame(): bool
     {
-        return $this->purchases->contains(function($purchase) {
-            return $purchase->product_id_fk == 1;
-        });
+        return $this->hasPurchasedProduct(1);
     }
 
     /**
@@ -81,16 +89,6 @@ class User extends Authenticatable
     {
         return $this->purchases->contains(function($purchase) {
             return $purchase->product_id_fk != 1;
-        });
-    }
-
-    /**
-     * Verificar si el usuario ya compró un producto específico
-     */
-    public function hasPurchasedProduct(int $productId): bool
-    {
-        return $this->purchases->contains(function($purchase) use ($productId) {
-            return $purchase->product_id_fk == $productId;
         });
     }
 

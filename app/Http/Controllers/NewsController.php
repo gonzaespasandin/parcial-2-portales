@@ -34,7 +34,7 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required|string|max:40',
             'content' => 'required|string',
-            'category_fk_id' => 'required|exists:categories,category_id',
+            'category_fk_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'image_description' => 'nullable|required_with:image|string',
         ], [
@@ -89,7 +89,7 @@ class NewsController extends Controller
             $rules = [
                 'title' => 'required|string|max:80',
                 'content' => 'required|string',
-                'category_fk_id' => 'required|exists:categories,category_id',
+                'category_fk_id' => 'required|exists:categories,id',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ];
 

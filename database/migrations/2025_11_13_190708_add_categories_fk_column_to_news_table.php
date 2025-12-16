@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('news', function (Blueprint $table) {
             $table->unsignedTinyInteger('category_fk_id')->nullable();
 
-            $table->foreign('category_fk_id')->references('category_id')->on('categories')->nullOnDelete();
+            $table->foreign('category_fk_id')->references('id')->on('categories')->nullOnDelete();
         });
     }
 

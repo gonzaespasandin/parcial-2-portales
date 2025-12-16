@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
-            $table->string('imageRoute');
-            $table->string('imageDescription');
+            $table->string('image_route');
+            $table->string('image_description');
             $table->string('content')->nullable();
             $table->string('price');
             $table->timestamps();

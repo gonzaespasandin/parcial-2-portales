@@ -44,8 +44,8 @@
                                 @foreach($cartItems as $item)
                                     <div class="cart-item">
                                         <div class="cart-item-image">
-                                            @if ($item['product']->imageRoute !== null && \Storage::exists($item['product']->imageRoute))
-                                                <img src="{{ \Storage::url($item['product']->imageRoute) }}" alt="{{ $item['product']->imageDescription }}" class="w-100 h-100 object-fit-cover">
+                                            @if ($item['product']->image_route !== null && \Storage::exists($item['product']->image_route))
+                                                <img src="{{ \Storage::url($item['product']->image_route) }}" alt="{{ $item['product']->image_description }}" class="w-100 h-100 object-fit-cover">
                                             @else
                                                 <img src="{{ \Storage::url('images/logo-liga-de-cohetes.png') }}" alt="Logo de la Liga de Cohetes" class="w-100 h-100 object-fit-cover">
                                             @endif

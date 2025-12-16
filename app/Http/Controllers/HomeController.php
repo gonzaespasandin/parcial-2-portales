@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $products = Products::all();
+        $products = Product::all();
         return view('home', ['products' => $products]);
     }
 }

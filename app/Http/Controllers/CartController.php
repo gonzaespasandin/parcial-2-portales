@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +21,7 @@ class CartController extends Controller
 
         $productIds = array_keys($cart);
 
-        $products = Products::whereIn('id', $productIds)->get();
+        $products = Product::whereIn('id', $productIds)->get();
 
         $cartItems = $products->map(function($product) use ($cart){
             return [

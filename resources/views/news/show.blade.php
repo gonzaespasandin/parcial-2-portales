@@ -24,7 +24,7 @@
                         @if ($news->category) 
                             style="color: {{ $news->category->color }}" 
                         @endif> 
-                        {{ $news->category?->category_name ?? 'Sin categoría' }}
+                        {{ $news->category?->name ?? 'Sin categoría' }}
                         </span>
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
                             <h1 class="h2 fw-bold mb-2 mb-md-0">{{ $news->title }}</h1>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-footer bg-transparent border-0 px-4 px-md-5 pb-5">
                         <div class="d-flex justify-content-end gap-2">
-                            <a href="<?= route('news.index'); ?>" class="btn-secondary">Volver</a>
+                            <a href="<?= route('news.index'); ?>" class="btn btn-secondary">Volver</a>
                         </div>
                     </div>
                 </div>
